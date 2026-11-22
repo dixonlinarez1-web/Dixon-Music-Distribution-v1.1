@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dixon Music Distribution</title>
+<style>
+:root {
+  --gold:#d6ad60;
+  --gold2:#f2d18c;
+  --black:#090909;
+  --panel:#151515;
+  --muted:#aaa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--black);color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+}
+header{
+  height:78px;padding:0 7%;display:flex;
+  justify-content:space-between;align-items:center;
+  border-bottom:1px solid #352a19;
+  background:#0c0c0c;position:sticky;top:0;z-index:10;
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{
+  width:45px;height:45px;border:2px solid var(--gold);
+  border-radius:50%;display:grid;place-items:center;
+  color:var(--gold);font-size:23px;
+}
+.logo strong{display:block;color:var(--gold);letter-spacing:2px}
+.logo small{color:#aaa;letter-spacing:3px;font-size:10px}
+nav{display:flex;gap:22px;align-items:center}
+a{color:#ddd;text-decoration:none}
+a:hover{color:var(--gold)}
+button{
+  border:0;cursor:pointer;border-radius:5px;
+  padding:13px 20px;font-weight:bold;
+}
+.gold-btn{
+  color:#111;background:linear-gradient(135deg,#f2d18c,#b4863d);
+}
+.outline-btn{
+  color:var(--gold);border:1px solid var(--gold);background:transparent;
+}
+button:hover{filter:brightness(1.12)}
+.hero{
+  min-height:570px;padding:90px 8%;
+  display:flex;align-items:center;
+  background:linear-gradient(90deg,#080808 35%,#080808dd 65%,#08080888),
+  url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+.hero-content{max-width:700px}
+.tag{color:var(--gold);letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(38px,6vw,70px);line-height:1.08;margin:20px 0}
+h1 span{color:var(--gold)}
+.hero p{color:#bbb;font-size:18px;line-height:1.7;max-width:600px}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+section{padding:75px 8%}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:32px;color:var(--gold)}
+.section-title p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:var(--panel);border:1px solid #352a19;
+  padding:30px;border-radius:10px;
+}
+.card .symbol{font-size:30px;color:var(--gold)}
+.card h3{color:var(--gold2)}
+.card p{color:#aaa;line-height:1.6}
+.form-section{background:#101010}
+.form-wrap{max-width:650px;margin:auto}
+.panel{
+  background:#171717;border:1px solid #49391f;
+  border-radius:12px;padding:30px;
+}
+.panel h2{color:var(--gold);margin-top:0}
+.field{margin:15px 0}
+label{display:block;color:#ddd;font-size:13px;margin-bottom:8px}
+input,select{
+  width:100%;padding:13px;border-radius:5px;
+  background:#090909;border:1px solid #494039;
+  color:white;font-size:15px;
+}
+input:focus,select:focus{outline:1px solid var(--gold)}
+.full{width:100%;margin-top:12px}
+.hidden{display:none!important}
+.message{font-size:14px;color:var(--gold);margin-top:15px;line-height:1.5}
+.dashboard{max-width:1050px;margin:auto}
+.dashboard-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+td,th{text-align:left;padding:13px;border-bottom:1px solid #393025;font-size:13px}
+th{color:var(--gold)}
+.status{color:var(--gold2)}
+footer{
+  border-top:1px solid #352a19;padding:35px 8%;
+  text-align:center;color:#888;font-size:13px;
+}
+footer strong{color:var(--gold)}
+@media(max-width:750px){
+  header{padding:12px 5%;height:auto;flex-wrap:wrap;gap:12px}
+  nav{width:100%;justify-content:center;gap:15px;font-size:13px}
+  .hero{padding:75px 7%;min-height:480px}
+  section{padding:55px 6%}
+  .cards{grid-template-columns:1fr}
+  .panel{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">♫</div>
+    <div>
+      <strong>DIXON MUSIC</strong>
+      <small>DISTRIBUTION</small>
+    </div>
+  </div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#registro">Artistas</a>
+    <button class="outline-btn" onclick="showLogin()">Iniciar sesión</button>
+  </nav>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="tag">DISTRIBUCIÓN MUSICAL PROFESIONAL</div>
+      <h1>TU MÚSICA.<br>TU CARRERA.<br><span>TU DISTRIBUCIÓN.</span></h1>
+      <p>
+        Una plataforma creada para artistas, agrupaciones y sellos
+        discográficos. Registra tu proyecto y gestiona tus lanzamientos
+        musicales desde un solo lugar.
+      </p>
+      <div class="actions">
+        <button class="gold-btn" onclick="showRegister()">REGISTRAR ARTISTA</button>
+        <button class="outline-btn" onclick="showLogin()">INICIAR SESIÓN</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section id="servicios">
+  <div class="section-title">
+    <div class="tag">NUESTROS SERVICIOS</div>
+    <h2>Tu música merece más</h2>
+    <p>Herramientas para gestionar tu proyecto musical.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="symbol">♫</div>
+      <h3>Artistas y agrupaciones</h3>
+      <p>Registra tu proyecto musical y crea tu cuenta personal.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">◉</div>
+      <h3>Lanzamientos musicales</h3>
+      <p>Envía tus canciones y portadas para revisión.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">▤</div>
+      <h3>Panel de seguimiento</h3>
+      <p>Consulta el estado de tus entregas y lanzamientos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="form-section hidden" id="registro">
+  <div class="form-wrap">
+    <div class="panel">
+      <h2>Registro de artistas</h2>
+      <p style="color:#aaa">Crea tu cuenta en Dixon Music Distribution.</p>
+      <form id="registerForm">
+        <div class="field">
+          <label>Tipo de cuenta</label>
+          <select name="accountType" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Artista">Artista</option>
+            <option value="Agrupación">Agrupación</option>
+            <option value="Sello discográfico">Sello discográfico</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Nombre completo del responsable</label>
+          <input name="fullName" required maxlength="120">
+        </div>
+        <div class="field">
+          <label>Nombre artístico o agrupación</label>
+          <input name="artistName" required maxlength="120">
+        </div>
+        <div class="field">
+          <label>Correo electrónico</label>
+          <input name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label>País</label>
+          <input name="country" required>
+        </div>
+        <div class="field">
+          <label>Género musical</label>
+          <input name="genre" placeholder="Ej. Regional mexicano, vallenato..." required>
+        </div>
+        <div class="field">
+          <label>Contraseña (mínimo 12 caracteres)</label>
+          <input name="password" type="password" minlength="12" required>
+        </div>
+        <button class="gold-btn full" type="submit">CREAR MI CUENTA</button>
+        <div class="message" id="registerMessage"></div>
+      </form>
+      <p style="color:#aaa;font-size:13px">
+        ¿Ya tienes una cuenta?
+        <a href="#" onclick="showLogin();return false">Inicia sesión</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="form-section hidden" id="login">
+  <div class="form-wrap">
+    <div class="panel">
+      <h2>Bienvenido nuevamente</h2>
+      <p style="color:#aaa">Accede a tu cuenta de artista.</p>
+      <form id="loginForm">
+        <div class="field">
+          <label>Correo electrónico</label>
+          <input name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <input name="password" type="password" required>
+        </div>
+        <button class="gold-btn full" type="submit">INICIAR SESIÓN</button>
+        <div class="message" id="loginMessage"></div>
+      </form>
+      <p style="color:#aaa;font-size:13px">
+        ¿No tienes cuenta?
+        <a href="#" onclick="showRegister();return false">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="form-section hidden" id="dashboard">
+  <div class="dashboard">
+    <div class="dashboard-top">
+      <div>
+        <div class="tag">ÁREA PRIVADA</div>
+        <h2 style="color:var(--gold)">Panel del artista</h2>
+        <p id="artistWelcome" style="color:#aaa"></p>
+      </div>
+      <button class="outline-btn" onclick="logout()">CERRAR SESIÓN</button>
+    </div>
+
+    <div class="cards" style="margin:30px 0">
+      <div class="card">
+        <div class="symbol">♫</div>
+        <h3>Mi proyecto</h3>
+        <p id="artistDetails">Cargando...</p>
+      </div>
+      <div class="card">
+        <div class="symbol">◉</div>
+        <h3>Mis lanzamientos</h3>
+        <p id="releaseCount">0 lanzamientos</p>
+      </div>
+      <div class="card">
+        <div class="symbol">%</div>
+        <h3>Modelo comercial</h3>
+        <p>85% artista / 15% Dixon</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Enviar nuevo lanzamiento</h2>
+      <form id="releaseForm">
+        <div class="field">
+          <label>Nombre del artista</label>
+          <input name="artistName" id="releaseArtist" required>
+        </div>
+        <div class="field">
+          <label>Título de la canción o álbum</label>
+          <input name="title" required>
+        </div>
+        <div class="field">
+          <label>Tipo de lanzamiento</label>
+          <select name="releaseType" required>
+            <option value="">Seleccionar</option>
+            <option value="Sencillo">Sencillo</option>
+            <option value="EP">EP</option>
+            <option value="Álbum">Álbum</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Fecha deseada de lanzamiento</label>
+          <input type="date" name="desiredDate" required>
+        </div>
+        <div class="field">
+          <label>Archivo de audio (WAV, MP3 o FLAC)</label>
+          <input type="file" name="audio" accept=".wav,.mp3,.flac,.m4a" required>
+        </div>
+        <div class="field">
+          <label>Portada (JPG o PNG)</label>
+          <input type="file" name="cover" accept=".jpg,.jpeg,.png" required>
+        </div>
+        <div class="field">
+          <label style="display:flex;gap:10px;align-items:flex-start">
+            <input type="checkbox" id="rights" style="width:auto;margin:0" required>
+            Confirmo que tengo los derechos o autorizaciones necesarios
+            para entregar este material.
+          </label>
+        </div>
+        <button class="gold-btn full" type="submit">ENVIAR LANZAMIENTO</button>
+        <div class="message" id="releaseMessage"></div>
+      </form>
+    </div>
+
+    <div class="panel" style="margin-top:25px">
+      <h2>Historial de lanzamientos</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Tipo</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="releaseRows">
+            <tr><td colspan="4">Cargando información...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>DIXON MUSIC DISTRIBUTION</strong>
+  <p>Tu talento, nuestra plataforma.</p>
+  <p>© 2026 Dixon Music Distribution. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function hideSections(){
+  ["registro","login","dashboard"].forEach(id => $(id).classList.add("hidden"));
+}
+function showRegister(){
+  hideSections();
+  $("registro").classList.remove("hidden");
+  $("registro").scrollIntoView({behavior:"smooth"});
+}
+function showLogin(){
+  hideSections();
+  $("login").classList.remove("hidden");
+  $("login").scrollIntoView({behavior:"smooth"});
+}
+function showDashboard(){
+  hideSections();
+  $("dashboard").classList.remove("hidden");
+  $("dashboard").scrollIntoView({behavior:"smooth"});
+}
+
+async function api(url,options={}){
+  const response=await fetch(url,{
+    credentials:"same-origin",
+    ...options
+  });
+  const data=await response.json().catch(()=>({error:"Respuesta no válida del servidor."}));
+  if(!response.ok) throw new Error(data.error || "Ocurrió un error.");
+  return data;
+}
+
+$("registerForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const msg=$("registerMessage");
+  msg.textContent="Creando tu cuenta...";
+  const body=Object.fromEntries(new FormData(e.target).entries());
+  try{
+    const data=await api("/api/register",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(body)
+    });
+    msg.textContent=data.message || "Cuenta creada correctamente.";
+    e.target.reset();
+    await loadDashboard();
+  }catch(err){
+    msg.textContent=err.message;
+  }
+});
+
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const msg=$("loginMessage");
+  msg.textContent="Verificando acceso...";
+  const body=Object.fromEntries(new FormData(e.target).entries());
+  try{
+    await api("/api/login",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(body)
+    });
+    await loadDashboard();
+  }catch(err){
+    msg.textContent=err.message;
+  }
+});
+
+async function loadDashboard(){
+  try{
+    const data=await api("/api/me");
+    const artist=data.artist;
+    $("artistWelcome").textContent="Bienvenido, "+artist.full_name;
+    $("artistDetails").textContent=
+      artist.artist_name+" · "+artist.country+" · "+artist.genre;
+    $("releaseArtist").value=artist.artist_name;
+    $("releaseCount").textContent=data.releases.length+" lanzamientos";
+    const rows=$("releaseRows");
+    rows.innerHTML="";
+    if(!data.releases.length){
+      rows.innerHTML="<tr><td colspan='4'>Todavía no tienes lanzamientos.</td></tr>";
+    }else{
+      data.releases.forEach(r=>{
+        const tr=document.createElement("tr");
+        [r.title,r.release_type,r.desired_date,r.status].forEach(value=>{
+          const td=document.createElement("td");
+          td.textContent=value || "";
+          tr.appendChild(td);
+        });
+        rows.appendChild(tr);
+      });
+    }
+    showDashboard();
+  }catch(err){
+    showLogin();
+    $("loginMessage").textContent=err.message;
+  }
+}
+
+$("releaseForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const msg=$("releaseMessage");
+  msg.textContent="Subiendo archivos...";
+  const form=new FormData(e.target);
+  form.set("rightsConfirmed",$("rights").checked?"yes":"no");
+  try{
+    const data=await api("/api/releases",{
+      method:"POST",
+      body:form
+    });
+    msg.textContent=data.message || "Lanzamiento recibido.";
+    e.target.reset();
+    await loadDashboard();
+  }catch(err){
+    msg.textContent=err.message;
+  }
+});
+
+async function logout(){
+  try{
+    await api("/api/logout",{method:"POST"});
+    hideSections();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(err){
+    alert(err.message);
+  }
+}
+
+async function checkSession(){
+  try{
+    await loadDashboard();
+  }catch(err){
+    console.log("No hay sesión iniciada.");
+  }
+}
+checkSession();
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 .env
 node_modules/
-datos/
+data/
 *.sqlite
 *.db
 .DS_Store
